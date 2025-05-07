@@ -1,4 +1,4 @@
-## Diagrama de classes 
+## Diagrama de classes
 
 ```mermaid
 classDiagram
@@ -32,8 +32,8 @@ classDiagram
         +String description
     }
 
-    User "1" *-- "1" Account
-    User "1" *-- "N" Feature
-    User "1" *-- "1" Card
-    User "1" *-- "N" News
+    User *-- Account
+    User *-- Feature
+    User *-- Card
+    User *-- News
 ```
