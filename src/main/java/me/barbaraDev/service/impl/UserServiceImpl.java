@@ -1,8 +1,8 @@
-package me.barbaraDev.domain.service.impl;
+package me.barbaraDev.service.impl;
 
 import me.barbaraDev.domain.model.User;
 import me.barbaraDev.domain.repository.UserRepository;
-import me.barbaraDev.domain.service.UserService;
+import me.barbaraDev.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
     @Override
-    public User findId(Long id) {
+    public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 

@@ -1,9 +1,9 @@
-package me.barbaraDev.domain.service;
+package me.barbaraDev.service;
 
 import me.barbaraDev.domain.model.User;
 
 public interface UserService {
 
-    User findId(Long id);
+    User findById(Long id);
     User create(User userToCreate);
 }
