@@ -55,4 +55,15 @@ public class UserServiceImpl implements UserService {
         userToUpdate.setId(id);
         return userRepository.save(userToUpdate);
     }
+
+    @Transactional
+    public void delete(Long id){
+        if(UNCHANGEABLE_USER_ID.equals(id)){
+            throw new IllegalArgumentException("Cannot update user with ID " + UNCHANGEABLE_USER_ID);
+        }
+        User userToDelete = this.findById(id);
+        this.userRepository.delete(userToDelete);
+    }
+
+
 }
