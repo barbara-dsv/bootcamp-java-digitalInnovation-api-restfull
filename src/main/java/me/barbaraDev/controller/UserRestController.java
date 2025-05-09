@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -16,6 +17,14 @@ public class UserRestController {
     public UserRestController(UserService userService) {
         this.userService = userService;
     }
+
+
+    @GetMapping
+    public ResponseEntity<List<User>> findAll (){
+        var users = userService.findAll();
+        return ResponseEntity.ok(users);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
@@ -32,5 +41,11 @@ public class UserRestController {
                 .toUri();
         return ResponseEntity.created(location).body(userCreated);
 
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity <User> update(@PathVariable Long id, @RequestBody User userToUpdate){
+        User updateUser = userService.update(id, userToUpdate);
+        return ResponseEntity.ok(updateUser);
     }
 }
